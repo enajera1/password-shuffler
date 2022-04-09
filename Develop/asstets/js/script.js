@@ -50,27 +50,6 @@ function passNum(){
   return(passNumconfirm);
 }  
 
-const passwordEl = document.getElementById('password');
-const lengthEl = document.getElementById('length');
-const uppercaseEl = document.getElementById('uppercase');
-const lowercaseEl = document.getElementById('lowercase');
-const numbersEl = document.getElementById('numbers');
-const symbolsEl = document.getElementById('symbols');
-const generateEl = document.getElementById('generate');
-
-
-const randomFun = {
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  symbol: getRandomSymbol,
-};
-
-generateEl.addEventListener('click', () => {
-  const length = userinputLength.value;
-
-  console.log( );
-});
 
 //random generators
 function getRandomLower() {
@@ -90,8 +69,32 @@ function getRandomSymbol () {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
+var generatorArray = []
+
 function generatePassword() {
-  var userinputLength
+  var length = userinputLength();
+  var lower = passCase1();
+  var upper = passCase2();
+  var char = passChar();
+  var number = passNum();
+    if (lower === true) {
+      generatorArray.push(getRandomLower)
+    }
+    if (upper === true) {
+      generatorArray.push(getRandomUpper);
+    }
+    if (char === true) {
+      generatorArray.push(getRandomSymbol);
+    }
+    if (number === true) {
+      generatorArray.push(getRandomNumber);
+    }
+  var finalPassword = "" ;
+  for ( var i = 0; i < length; i++ ) {
+    var indexRandom = Math.floor(Math.random() * generatorArray.length)
+    finalPassword += generatorArray[indexRandom]() 
+  }
+  return finalPassword;
 }
 
 
