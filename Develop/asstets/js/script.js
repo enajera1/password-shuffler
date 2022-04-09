@@ -11,7 +11,7 @@ function userinputLength() {
   else {
     if (typeof(passLength) === "number"){
       console.log(passLength);
-      window.alert("You have chosen " + passLength);
+      return passLength;
     } else if (typeof(passLength) === "string", "char"){
       console.log("NOT A NUMBER");
       window.alert("That's not a number, try again?");
@@ -24,50 +24,30 @@ function userinputLength() {
 //Function asking user for uppercase or not
 function passCase1 () {
   var passCaseconfirm1 = window.confirm("Do you want Upper case characters?")
-  if (passCaseconfirm1 === true) {
-    window.alert("You have chosen to use upper case characters.")
-  } else {
-    window.alert("You have chosen to NOT use upper case characters")
-  }
   console.log(passCaseconfirm1);
+  return(passCaseconfirm1);
 };
 
 //function asking user if they want lower case characters or not
 function passCase2() { 
   var passCaseconfirm2 = window.confirm("Do you want lower case characters?")
-      if (passCaseconfirm2 === true) {
-        window.alert("You have chosen to use lower case characters.")
-      }else {
-        window.alert("You have chosen NOT to use lower case characters.")
-      }
-      //USE UPPERCASE ARRAY
-    
     console.log(passCaseconfirm2);
+    return(passCaseconfirm2);
   }
 
 // Function asking user for special characters or not
 function passChar()  {
   var passCharconfirm = window.confirm("Do you want to use special characters or not?");
-  if (passCharconfirm) {
-    window.alert("You have chosen to use special characters");
+  console.log(passCharconfirm);
+  return(passCharconfirm);
     // USE SPECIAL CHARACTERS ARRAY
-  } else{
-    window.alert("You have chosen NOT to use special characters");
     // DON'T USE SPECIAL CHARACTERS ARRAY
-  }
-  console.log(passCharconfirm)
 }
 //Function asking user if they want to use numbers or not
 function passNum(){
   var passNumconfirm = window.confirm("Do you want to use numbers or not?");
-  if (passNumconfirm) {
-    window.alert("You have chosen to use numbers");
-    //USE SPECIAL CHARACTERS ARRAY
-  } else {
-    window.alert("You have chosen NOT to use numbers");
-    //DONT USE SPECIAL CHARACTERS ARRAY
-  }
   console.log(passNumconfirm);
+  return(passNumconfirm);
 }  
 
 const passwordEl = document.getElementById('password');
@@ -89,7 +69,7 @@ const randomFun = {
 generateEl.addEventListener('click', () => {
   const length = userinputLength.value;
 
-  console.log(length);
+  console.log( );
 });
 
 //random generators
@@ -110,33 +90,27 @@ function getRandomSymbol () {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-
+function generatePassword() {
+  var userinputLength
+}
 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-//function writePassword() {
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  //passwordText.value = password;
+  passwordText.value = password;
 
-//}
+}
 
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
+ //Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 
 //writePassword();
-function run () {
-  userinputLength();
-  passCase1();
-  passCase2();
-  passChar();
-  passNum();
-}
 
-run ();
