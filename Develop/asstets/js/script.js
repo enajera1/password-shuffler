@@ -68,15 +68,17 @@ function getRandomSymbol () {
   const symbols = '!@#$%^&*(){}[]=<>,.';
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
-
+//Array for questions ansered
 var generatorArray = []
 
 function generatePassword() {
+  //variables for random selectors
   var length = userinputLength();
   var lower = passCase1();
   var upper = passCase2();
   var char = passChar();
   var number = passNum();
+  // push if box is true. Do nothing if false
     if (lower === true) {
       generatorArray.push(getRandomLower)
     }
@@ -89,11 +91,13 @@ function generatePassword() {
     if (number === true) {
       generatorArray.push(getRandomNumber);
     }
+    //variable to put random selection into password
   var finalPassword = "" ;
   for ( var i = 0; i < length; i++ ) {
     var indexRandom = Math.floor(Math.random() * generatorArray.length)
     finalPassword += generatorArray[indexRandom]() 
   }
+  console.log();
   return finalPassword;
 }
 
